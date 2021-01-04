@@ -19,14 +19,14 @@ $("#cadastrar").click(function() {
     var titulo = $("#titulo").val();
     var descricao = $("#descricao").val();
     var quantidade = $("#quantidade").val();
-    var valor = $("#valor").val();
+    var preco = $("#preco").val();
 
     var dados = {
         cadastrarProduto: 1,
         titulo: titulo,
         descricao: descricao,
         quantidade: quantidade,
-        valor: valor
+        preco: preco
     }
 
     $.post("backend/controllerProduto.php", dados, function (retorna) {

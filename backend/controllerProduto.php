@@ -8,8 +8,8 @@ if (isset($_POST['cadastrarProduto'])) {
     $titulo = (isset($_POST['titulo'])) ? $_POST['titulo'] : null;
     $descricao = (isset($_POST['descricao'])) ? $_POST['descricao'] : null;
     $quantidade = (isset($_POST['quantidade'])) ? $_POST['quantidade'] : null;
-    $valor = (isset($_POST['valor'])) ? $_POST['valor'] : null;
-    $produto->cadastrar($titulo, $descricao, $quantidade, $valor);
+    $preco = (isset($_POST['preco'])) ? $_POST['preco'] : null;
+    $produto->cadastrar($titulo, $descricao, $quantidade, $preco);
 }
 
 

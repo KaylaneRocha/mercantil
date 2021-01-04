@@ -6,7 +6,7 @@ class Produto
 {
 
     // Cadastro
-    public function cadastrar($titulo, $descricao, $quantidade, $valor)
+    public function cadastrar($titulo, $descricao, $quantidade, $preco)
     {
 
         $conexao = new Conexao();
@@ -14,7 +14,7 @@ class Produto
 
         try {
 
-            $sql = "INSERT INTO produto VALUES (null,:titulo, :descricao, :quantidade, :valor);";
+            $sql = "INSERT INTO produto VALUES (null,:titulo, :descricao, :quantidade, :preco);";
 
 
             $consulta = $conn->prepare($sql);
@@ -22,7 +22,7 @@ class Produto
             $consulta->bindValue(":titulo", $titulo);
             $consulta->bindValue(":descricao", $descricao);
             $consulta->bindValue(":quantidade", $quantidade);
-            $consulta->bindValue(":valor", $valor); 
+            $consulta->bindValue(":preco", $preco); 
             $retorno = $consulta->execute();
 
             if ($retorno) {
