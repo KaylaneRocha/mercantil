@@ -8,9 +8,12 @@ if (isset($_POST['cadastrarProduto'])) {
     $titulo = (isset($_POST['titulo'])) ? $_POST['titulo'] : null;
     $descricao = (isset($_POST['descricao'])) ? $_POST['descricao'] : null;
     $quantidade = (isset($_POST['quantidade'])) ? $_POST['quantidade'] : null;
-    $preco = (isset($_POST['preco'])) ? $_POST['preco'] : null;
-    $produto->cadastrar($titulo, $descricao, $quantidade, $preco);
+    $valor = (isset($_POST['valor'])) ? $_POST['valor'] : null;
+    $produto->cadastrar($titulo, $descricao, $quantidade, $valor);
 }
+
+
+
 
 if (isset($_GET['listarProduto'])) {
     $dados = $produto->listar();
@@ -24,7 +27,6 @@ if (isset($_GET['listarProduto'])) {
                     <td>" . $produto["preco"] . "</td>
                     <td onclick='deletarProduto(" . $produto["id"] . ")'>Excluir</td>
                     <td onclick='consultarProduto(" . $produto["id"] . ")'>Editar</td>
-
                 </tr>
             ";
     }

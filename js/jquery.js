@@ -7,33 +7,36 @@ function listar() {
         listarProduto: 1,
     }
 
-    $.get("backend/controllerProduto.php", dados,function (retorna) {
+    $.get("backend/controllerProduto.php", dados, function (retorna) {
         table.html(retorna);
     });    
 }
 
-$("#enviar").click(function() {
+
+
+$("#cadastrar").click(function() {
+
     var titulo = $("#titulo").val();
     var descricao = $("#descricao").val();
     var quantidade = $("#quantidade").val();
-    var preco = $("#preco").val();
-
-    // alert("Nome: "+nome+"\nIdade: "+idade);
+    var valor = $("#valor").val();
 
     var dados = {
         cadastrarProduto: 1,
         titulo: titulo,
         descricao: descricao,
         quantidade: quantidade,
-        preco: preco
+        valor: valor
     }
 
-    $.post("backend/controllerProduto.php", dados,function (retorna) {
+    $.post("backend/controllerProduto.php", dados, function (retorna) {
         alert(retorna);
         listar();
     });    
 
 });
+
+
 
 function deletarProduto(id) {
     var dados = {
@@ -46,6 +49,8 @@ function deletarProduto(id) {
         listar();
     });    
 }
+
+
 
 function consultarProduto(id) {
     var dados = {
@@ -64,6 +69,8 @@ function consultarProduto(id) {
         $("#editar_produto").show("fast");
     });
 }
+
+
 
 $("#editar_enviar").click(function() {
     var id = $("#editar_id").val();

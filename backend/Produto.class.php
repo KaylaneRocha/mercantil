@@ -6,7 +6,7 @@ class Produto
 {
 
     // Cadastro
-    public function cadastrar($titulo, $descricao, $quantidade, $preco)
+    public function cadastrar($titulo, $descricao, $quantidade, $valor)
     {
 
         $conexao = new Conexao();
@@ -14,7 +14,7 @@ class Produto
 
         try {
 
-            $sql = "INSERT INTO produto VALUES (null,:titulo,:descricao,:quantidade,:preco);";
+            $sql = "INSERT INTO produto VALUES (null,:titulo, :descricao, :quantidade, :preco);";
 
 
             $consulta = $conn->prepare($sql);
@@ -22,14 +22,10 @@ class Produto
             $consulta->bindValue(":titulo", $titulo);
             $consulta->bindValue(":descricao", $descricao);
             $consulta->bindValue(":quantidade", $quantidade);
-
-            $consulta->bindValue(":preco", $preco);
-
-
+            $consulta->bindValue(":valor", $valor); 
             $retorno = $consulta->execute();
 
             if ($retorno) {
-
                 echo "Produto cadastrado";
             } else {
                 echo "Erro";
@@ -101,7 +97,7 @@ class Produto
 
         try {
 
-            $sql = "UPDATE produto SET titulo = :titulo, descricao = :descricao, quantidade = :quantidade, preco = :preco WHERE id = :id";
+            $sql = "UPDATE produto SET titulo = :titulo, descricao = :descricao, quantidade = :quantidade, preco = :preco WHERE id = :id;";
 
 
             $consulta = $conn->prepare($sql);
