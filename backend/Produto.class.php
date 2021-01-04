@@ -14,7 +14,7 @@ class Produto
 
         try {
 
-            $sql = "INSERT INTO produto VALUES (null,:titulo, :descricao, :quantidade, :preco);";
+            $sql = "INSERT INTO produto VALUES (null,:titulo, :descricao, :quantidade, :valor);";
 
 
             $consulta = $conn->prepare($sql);
