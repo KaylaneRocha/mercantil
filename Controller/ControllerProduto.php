@@ -28,11 +28,11 @@ if (isset($_POST['listarProdutos'])) {
                         <td>" . $produto['quantidade'] . "</td>
                         <td>" . $produto['preco'] . "</td>
                         <td>
-                        <button type='button' class='btn btn-info' onclick='consultarId(" . $produto['id'] . ")'><i class='fas fa-pen'></i></button>
+                        <button type='button' class='btn btn-info' onclick='consultarId(" . $produto['id'] . ")' title='Editar'><i class='fas fa-pen'></i></button>
 
-                        <button type='button' class='btn btn-danger' onclick='ConfirmarExc(" . $produto['id'] . ")'><i class='far fa-trash-alt'></i></button>
+                        <button type='button' class='btn btn-danger' onclick='ConfirmarExc(" . $produto['id'] . ")' title='Deletar'><i class='far fa-trash-alt'></i></button>
 
-                        <button type='button' class='btn btn-warning' onclick='visualizar(" . $produto['id'] . ")'><i class='fas fa-eye'></i></button>
+                        <button type='button' class='btn btn-warning' onclick='visualizar(" . $produto['id'] . ")'><i class='fas fa-eye' title='Visualizar'></i></button>
                         </td>
                     </tr>
                 </tbody>";
