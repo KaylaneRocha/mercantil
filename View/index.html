@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="pt-br">
+
+	<head>
+		<title>Home</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,
+			shrink-to-fit=no">
+
+		<link rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link
+			href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900"
+			rel="stylesheet">
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+			crossorigin="anonymous">
+
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/modal.css">
+
+
+	</head>
+
+	<body id="#tabela">
+
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+					</button>
+				</div>
+				<div class="img bg-wrap text-center py-4" style="background-image:
+					url(images/bg_2.jpg);">
+					<div class="user-logo">
+						<div class="img" style="background-image: url(images/mercantil.png);"></div>
+						<h3></h3>
+					</div>
+				</div>
+
+				<ul class="list-unstyled components mb-5">
+					<li class="active">
+						<a id="Tabela" href="#">Tabela</a>
+					</li>
+					<li class="active">
+						<a id="OnePage" href="#">One Page</a>
+					</li>
+					<li>
+						<a id="TwoPage" href="#">Two Page</a>
+					</li>
+				</ul>
+			</nav>
+
+			<!-- Page Content  -->
+			<div id="content" class="p-4 p-md-5 pt-5"></div>
+
+		</div>
+
+
+
+
+
+		<!-- Modal de Alerta-->
+		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+			data-bs-keyboard="false" tabindex="-1"
+			aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="staticBackdropLabel"></h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="alert alert-success" role="alert" id="modal_alert">
+
+						</div>
+					</div>
+					<div class="modal-footer"></div>
+				</div>
+			</div>
+		</div>
+		<!-- Fim do Modal de Alerta-->
+		<!--  -->
+		<!--  -->
+		<!--  -->
+		<!--  -->
+		<!--  -->
+		<!-- Modal de Edição de Dados-->
+		<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static"
+			data-bs-keyboard="false" tabindex="-1"
+			aria-labelledby="staticBackdropLabel2" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="staticBackdropLabel2"></h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body" id="editar">
+						<input type="hidden" class="form-control" id="idEdit">
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">TÍTULO:</label>
+							<input type="text" class="form-control" id="tituloEdit" maxlength="60">
+						</div>
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">DESCRIÇÃO:</label>
+							<input type="text" class="form-control" id="descricaoEdit">
+						</div>
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">QUANTIDADE:</label>
+							<input type="text" class="form-control" id="quantidadeEdit">
+						</div>
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">PREÇO:</label>
+							<input type="text" class="form-control" id="precoEdit">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary btn-sm"
+							data-bs-dismiss="modal">Fechar</button>
+						<button type="button" class="btn btn-primary btn-sm"
+							data-bs-dismiss="modal"
+							id="confirmarEdit">Confirmar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Fim do Modal de Edição de Dados-->
+		<!--  -->
+		<!--  -->
+		<!--  -->
+		<!--  -->
+		<!--  -->
+		<!-- Modal de Cadastro de Dados-->
+		<div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static"
+			data-bs-keyboard="false" tabindex="-1"
+			aria-labelledby="staticBackdropLabel3" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="staticBackdropLabel3"></h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body" id="cadastro">
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">TÍTULO:</label>
+							<input type="text" class="form-control" id="titulo" maxlength="60">
+						</div>
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">DESCRIÇÃO:</label>
+							<input type="text" class="form-control" id="descricao">
+						</div>
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">QUANTIDADE:</label>
+							<input type="text" class="form-control" id="quantidade">
+						</div>
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">PREÇO:</label>
+							<input type="text" class="form-control" id="preco">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary btn-sm"
+							data-bs-dismiss="modal">Fechar</button>
+						<button type="button" class="btn btn-primary btn-sm" id="confirmarCad"
+							data-bs-dismiss="modal">Confirmar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Fim do Modal de Cadastro-->
+		<!--  -->
+		<!--  -->
+		<!--  -->
+		<!--  -->
+		<!-- Modal de Confirmação-->
+		<div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static"
+			data-bs-keyboard="false" tabindex="-1"
+			aria-labelledby="staticBackdropLabel4" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="4"></h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="alert alert-warning" role="alert" id="pergunta">
+
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary btn-sm"
+							data-bs-dismiss="modal">Não</button>
+						<button type="button" class="btn btn-primary btn-sm"
+							data-bs-dismiss="modal"
+							id="confirmarExc">Sim</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Fim do Modal de Exclusão de Dados-->
+		<!--  -->
+		<!--  -->
+		<!--  -->
+		<!--  -->
+		<!-- Modal de Visualizão de dados -->
+		<div class="modal fade" id="staticBackdrop5" data-bs-backdrop="static"
+			data-bs-keyboard="false" tabindex="-1"
+			aria-labelledby="staticBackdropLabel5" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="staticBackdropLabel5"></h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">ID:</label>
+							<input type="text" class="form-control" id="idView" disabled>
+						</div>
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">TÍTULO:</label>
+							<input type="text" class="form-control" id="tituloView" disabled>
+						</div>
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">DESCRIÇÃO:</label>
+							<input type="text" class="form-control" id="descricaoView" disabled>
+						</div>
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">QUANTIDADE:</label>
+							<input type="text" class="form-control" id="quantidadeView" disabled>
+						</div>
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">PREÇO:</label>
+							<input type="text" class="form-control" id="precoView" disabled>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary btn-sm"
+							data-bs-dismiss="modal">Fechar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<!-- Scripts Links -->
+		<script src="../Model/ControllerProduto.js"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+			crossorigin="anonymous"></script>
+		<script src="js/jquery.js"></script>
+		<script src="js/table.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/loadRedirect.js"></script>
+
+
+
+
+	</body>
+
+</html>
