@@ -133,7 +133,7 @@ $('#confirmarEdit').click(function () {
         preco: preco
     }
 
-    $.post("../Controller/ControllerProduto.php", dados, function (retorno) { 
+    $.post("../Controller/ControllerProduto.php", dados, function (retorno) {
         contentModal.html(retorno);
         loadModal.modal('show');
         listar();
@@ -167,3 +167,22 @@ function visualizar(id) {
 
     });
 }
+
+/* ============================================================================ */
+
+$('#pesquisa').keyup(function () {
+
+    var selecao = $(this).val();
+    var table = $('#table');
+    var pesquisa = $(this).val();
+
+    var dados = {
+        buscarProduto: 1,
+        selecao: selecao,
+        pesquisa: pesquisa
+    }
+
+    $.post("../Controller/ControllerProduto.php", dados, function (retorna) {
+        table.html(retorna);
+    });
+})

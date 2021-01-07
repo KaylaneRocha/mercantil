@@ -1910,6 +1910,18 @@ pre code {
   border: 0;
 }
 
+.form-select-sm
+{
+  padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+    color: #474747;
+    border-color: #696969;
+
+}
+
+
 .form-control {
   display: block;
   width: 100%;

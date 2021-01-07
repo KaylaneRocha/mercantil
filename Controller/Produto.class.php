@@ -130,4 +130,21 @@ class Produto
             echo $e;
         }
     }
+
+    public function pesquisar($pesquisa)
+    {
+        $conexao = new Conexao();
+        $conn = $conexao->conectar();
+
+        try {
+            $sql = "SELECT * FROM produto WHERE titulo LIKE '%$pesquisa%' ";
+            $pesquisar = $conn->prepare($sql);
+            $pesquisar->execute();
+
+            return $pesquisar->fetchAll();
+
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
 }
