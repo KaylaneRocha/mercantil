@@ -82,8 +82,7 @@ if (isset($_POST['buscarProduto'])) {
 
     $pesquisa = (isset($_POST['pesquisa'])) ? $_POST['pesquisa'] : null;
 
-
-    $dados = $produto->pesquisar($pesquisa);
+    $dados = $produto->buscar($pesquisa);
 
     echo "<thead> 
             <tr>
@@ -114,3 +113,48 @@ if (isset($_POST['buscarProduto'])) {
                 </tbody>";
     }
 }
+
+
+/** ========================================================================== */
+
+if (isset($_POST['pesquisarProduto'])) {
+
+    $pesquisa = (isset($_POST['pesquisa'])) ? $_POST['pesquisa'] : null;
+    $sel = (isset($_POST['selecao'])) ? $_POST['selecao'] : null;
+
+
+    $dados = $produto->pesquisar($sel, $pesquisa);
+
+    echo "<thead> 
+            <tr>
+                <th>TÍTULO</th>
+                <th>DESCRIÇÃO</th>
+                <th>QUANTIDADE</th>
+                <th>PREÇO</th>
+                <th>AÇÕES</th>
+            </tr>
+        </thead>";
+
+    foreach ($dados as $produto) {
+        echo "  
+                <tbody>
+                    <tr>
+                        <td>" . $produto['titulo'] . "</td>
+                        <td>" . $produto['descricao'] . "</td>
+                        <td>" . $produto['quantidade'] . "</td>
+                        <td>" . $produto['valor'] . "</td>
+                        <td>
+                        <button type='button' class='btn btn-info' onclick='consultarId(" . $produto['id'] . ")' title='Editar'><i class='fas fa-pen'></i></button>
+
+                        <button type='button' class='btn btn-danger' onclick='ConfirmarExc(" . $produto['id'] . ")' title='Deletar'><i class='far fa-trash-alt'></i></button>
+
+                        <button type='button' class='btn btn-warning' onclick='visualizar(" . $produto['id'] . ")'><i class='fas fa-eye' title='Visualizar'></i></button>
+                        </td>
+                    </tr>
+                </tbody>";
+    }
+}
+
+
+
+

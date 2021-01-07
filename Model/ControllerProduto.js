@@ -172,12 +172,31 @@ function visualizar(id) {
 
 $('#pesquisa').keyup(function () {
 
-    var selecao = $(this).val();
     var table = $('#table');
     var pesquisa = $(this).val();
 
     var dados = {
         buscarProduto: 1,
+        pesquisa: pesquisa
+    }
+
+    $.post("../Controller/ControllerProduto.php", dados, function (retorna) {
+        table.html(retorna);
+    });
+}); 
+
+
+
+/* ============================================================================ */
+
+$('#selecione').change( function() {
+
+    var selecao = $(this).val();
+    var table = $('#table');
+    var pesquisa = $('#pesquisa').val();
+
+    var dados = {
+        pesquisarProduto: 1,
         selecao: selecao,
         pesquisa: pesquisa
     }
@@ -185,4 +204,5 @@ $('#pesquisa').keyup(function () {
     $.post("../Controller/ControllerProduto.php", dados, function (retorna) {
         table.html(retorna);
     });
-})
+
+});
