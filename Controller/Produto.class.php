@@ -47,7 +47,7 @@ class Produto
             $retorno = $consulta->execute();
 
             if ($retorno) {
-                echo "O Livro " . $titulo . " foi cadastrado com sucesso";
+                echo $titulo . " foi cadastrado com sucesso";
             } else {
                 echo "Erro ao cadastrar" . $titulo;
             }
