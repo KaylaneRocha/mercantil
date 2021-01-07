@@ -26,7 +26,7 @@ if (isset($_POST['listarProdutos'])) {
                         <td>" . $produto['titulo'] . "</td>
                         <td>" . $produto['descricao'] . "</td>
                         <td>" . $produto['quantidade'] . "</td>
-                        <td>" . $produto['preco'] . "</td>
+                        <td>" . $produto['valor'] . "</td>
                         <td>
                         <button type='button' class='btn btn-info' onclick='consultarId(" . $produto['id'] . ")' title='Editar'><i class='fas fa-pen'></i></button>
 
@@ -102,7 +102,7 @@ if (isset($_POST['buscarProduto'])) {
                         <td>" . $produto['titulo'] . "</td>
                         <td>" . $produto['descricao'] . "</td>
                         <td>" . $produto['quantidade'] . "</td>
-                        <td>" . $produto['preco'] . "</td>
+                        <td>" . $produto['valor'] . "</td>
                         <td>
                         <button type='button' class='btn btn-info' onclick='consultarId(" . $produto['id'] . ")' title='Editar'><i class='fas fa-pen'></i></button>
 

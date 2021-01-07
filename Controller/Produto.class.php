@@ -110,7 +110,7 @@ class Produto
 
         try {
 
-            $sql = "UPDATE produto SET titulo = :titulo, descricao = :descricao, quantidade = :quantidade, preco = :preco WHERE id = :id";
+            $sql = "UPDATE produto SET titulo = :titulo, descricao = :descricao, quantidade = :quantidade, valor = :preco WHERE id = :id";
 
             $editar = $conn->prepare($sql);
             $editar->bindValue(":id", $id);

@@ -104,7 +104,7 @@ function consultarId(id) {
         descricao.val(dados.descricao);
         descricao.val(dados.descricao);
         quantidade.val(dados.quantidade);
-        preco.val(dados.preco);
+        preco.val(dados.valor);
         loadModal.modal('show');
 
     });
@@ -162,7 +162,7 @@ function visualizar(id) {
         descricao.val(dados.descricao);
         descricao.val(dados.descricao);
         quantidade.val(dados.quantidade);
-        preco.val(dados.preco);
+        preco.val(dados.valor);
         loadModal.modal('show');
 
     });
