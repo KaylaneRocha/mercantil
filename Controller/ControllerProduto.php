@@ -118,7 +118,6 @@ if (isset($_POST['buscarProduto'])) {
 
 
 /** ========================================================================== */
-
 if (isset($_POST['pesquisarProduto'])) {
 
     $pesquisa = (isset($_POST['pesquisa'])) ? $_POST['pesquisa'] : null;
