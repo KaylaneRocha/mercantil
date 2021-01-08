@@ -8,8 +8,8 @@ function redirect(e, page, title) {
     content.load(folder + page);		
 }
 
-$('#Tabela').click(function (e) {
-    redirect(e, "Tabela.html", "Tabela");
+$('#TreePage').click(function (e) {
+    redirect(e, "Tree.html", "Tree Page");
 });
 
 $('#OnePage').click(function (e) {

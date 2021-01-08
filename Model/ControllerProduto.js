@@ -4,7 +4,7 @@ listar();
 /* ============================================================================ */
 
 function listar() {
-    var table = $('#table');
+    var table = $('.table');
 
     var dados = {
         listarProdutos: 1
@@ -24,13 +24,15 @@ $('#confirmarCad').click(function () {
     var descricao = $('#descricao').val();
     var quantidade = $('#quantidade').val();
     var preco = $('#preco').val();
+    var link = $('#link').val();
 
     var dados = {
         cadastrarProduto: 1,
         titulo: titulo,
         descricao: descricao,
         quantidade: quantidade,
-        preco: preco
+        preco: preco,
+        link: link
     }
 
     $.post("../Controller/ControllerProduto.php", dados, function (retorna) {
@@ -96,6 +98,7 @@ function consultarId(id) {
     var descricao = $('#descricaoEdit');
     var quantidade = $('#quantidadeEdit');
     var preco = $('#precoEdit');
+    var link = $('#linkEdit');
 
     $.post("../Controller/ControllerProduto.php", dados, function (retorno) {
         var dados = JSON.parse(retorno);
@@ -105,6 +108,7 @@ function consultarId(id) {
         descricao.val(dados.descricao);
         quantidade.val(dados.quantidade);
         preco.val(dados.valor);
+        link.val(dados.imglink);
         loadModal.modal('show');
 
     });
@@ -123,6 +127,7 @@ $('#confirmarEdit').click(function () {
     var descricao = $('#descricaoEdit').val();
     var quantidade = $('#quantidadeEdit').val();
     var preco = $('#precoEdit').val();
+    var link = $('#linkEdit').val();
 
     var dados = {
         editarProduto: 1,
@@ -130,7 +135,8 @@ $('#confirmarEdit').click(function () {
         titulo: titulo,
         descricao: descricao,
         quantidade: quantidade,
-        preco: preco
+        preco: preco,
+        link: link
     }
 
     $.post("../Controller/ControllerProduto.php", dados, function (retorno) {
@@ -154,6 +160,7 @@ function visualizar(id) {
     var descricao = $('#descricaoView');
     var quantidade = $('#quantidadeView');
     var preco = $('#precoView');
+    var link = $('#imgView');
 
     $.post("../Controller/ControllerProduto.php", dados, function (retorno) {
         var dados = JSON.parse(retorno);
@@ -163,6 +170,14 @@ function visualizar(id) {
         descricao.val(dados.descricao);
         quantidade.val(dados.quantidade);
         preco.val(dados.valor);
+
+        if (dados.imglink == null || dados.imglink == "") {
+            link.attr('src', 'images/error.png');
+        } else {
+            link.attr('src', dados.imglink);
+        }
+        
+        
         loadModal.modal('show');
 
     });
@@ -183,26 +198,31 @@ $('#pesquisa').keyup(function () {
     $.post("../Controller/ControllerProduto.php", dados, function (retorna) {
         table.html(retorna);
     });
-}); 
+});
 
 
 
 /* ============================================================================ */
 
-$('#selecione').change( function() {
+$('#selecione').change(function () {
 
     var selecao = $(this).val();
     var table = $('#table');
     var pesquisa = $('#pesquisa').val();
 
-    var dados = {
-        pesquisarProduto: 1,
-        selecao: selecao,
-        pesquisa: pesquisa
+    if (selecao == 'sel') {
+        listar();
+    } else {
+
+        var dados = {
+            pesquisarProduto: 1,
+            selecao: selecao,
+            pesquisa: pesquisa
+        }
+
+        $.post("../Controller/ControllerProduto.php", dados, function (retorna) {
+            table.html(retorna);
+        });
+
     }
-
-    $.post("../Controller/ControllerProduto.php", dados, function (retorna) {
-        table.html(retorna);
-    });
-
 });

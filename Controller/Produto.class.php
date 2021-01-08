@@ -28,7 +28,7 @@ class Produto
     /**
      * Cadastrar Produto
      */
-    public function cadastrar($titulo, $descricao, $quantidade, $preco)
+    public function cadastrar($titulo, $descricao, $quantidade, $preco, $link)
     {
 
         $conexao = new Conexao();
@@ -36,13 +36,14 @@ class Produto
 
         try {
 
-            $sql = "INSERT INTO produto VALUES (null,:titulo, :descricao, :quantidade, :preco)";
+            $sql = "INSERT INTO produto VALUES (null,:titulo, :descricao, :quantidade, :preco, :link)";
 
             $consulta = $conn->prepare($sql);
             $consulta->bindValue(":titulo", $titulo);
             $consulta->bindValue(":descricao", $descricao);
             $consulta->bindValue(":quantidade", $quantidade);
             $consulta->bindValue(":preco", $preco);
+            $consulta->bindValue(":link", $link);
 
             $retorno = $consulta->execute();
 
@@ -103,14 +104,14 @@ class Produto
         }
     }
 
-    public function editar($id, $titulo, $descricao, $quantidade, $preco)
+    public function editar($id, $titulo, $descricao, $quantidade, $preco,$link)
     {
         $conexao = new Conexao();
         $conn = $conexao->conectar();
 
         try {
 
-            $sql = "UPDATE produto SET titulo = :titulo, descricao = :descricao, quantidade = :quantidade, valor = :preco WHERE id = :id";
+            $sql = "UPDATE produto SET titulo = :titulo, descricao = :descricao, quantidade = :quantidade, valor = :preco, imglink = :link WHERE id = :id";
 
             $editar = $conn->prepare($sql);
             $editar->bindValue(":id", $id);
@@ -118,6 +119,7 @@ class Produto
             $editar->bindValue(":descricao", $descricao);
             $editar->bindValue(":quantidade", $quantidade);
             $editar->bindValue(":preco", $preco);
+            $editar->bindValue(":link", $link);
 
             $retorno = $editar->execute();
 
@@ -137,6 +139,7 @@ class Produto
         $conn = $conexao->conectar();
 
         try {
+            // Selecione tudo que comece com a $pesquisa
             $sql = "SELECT * FROM produto WHERE titulo LIKE '%$pesquisa%' ";
             $pesquisar = $conn->prepare($sql);
             $pesquisar->execute();
@@ -154,6 +157,7 @@ class Produto
         $conn = $conexao->conectar();
 
         try {
+            // Selecione tudo que comece com a $pesquisa
             $sql = "SELECT * FROM produto WHERE $sel LIKE '%$pesquisa%' ";
             $pesquisar = $conn->prepare($sql);
             $pesquisar->execute();

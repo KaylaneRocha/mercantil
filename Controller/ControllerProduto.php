@@ -46,8 +46,9 @@ if (isset($_POST['cadastrarProduto'])) {
     $descricao = (isset($_POST['descricao'])) ? $_POST['descricao'] : null;
     $quantidade = (isset($_POST['quantidade'])) ? $_POST['quantidade'] : null;
     $preco = (isset($_POST['preco'])) ? $_POST['preco'] : null;
+    $link = (isset($_POST['link'])) ? $_POST['link'] : null;
 
-    $produto->cadastrar($titulo, $descricao, $quantidade, $preco);
+    $produto->cadastrar($titulo, $descricao, $quantidade, $preco, $link);
 }
 
 /** ========================================================================== */
@@ -73,8 +74,9 @@ if (isset($_POST['editarProduto'])) {
     $descricao = (isset($_POST['descricao'])) ? $_POST['descricao'] : null;
     $quantidade = (isset($_POST['quantidade'])) ? $_POST['quantidade'] : null;
     $preco = (isset($_POST['preco'])) ? $_POST['preco'] : null;
+    $link = (isset($_POST['link'])) ? $_POST['link'] : null;
 
-    $produto->editar($id, $titulo, $descricao, $quantidade, $preco);
+    $produto->editar($id, $titulo, $descricao, $quantidade, $preco, $link);
 }
 
 /** ========================================================================== */
