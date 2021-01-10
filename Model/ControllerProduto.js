@@ -32,11 +32,11 @@ $('#confirmarCad').click(function () {
 
     var dados = {
         cadastrarProduto: 1,
-        titulo: titulo,
-        descricao: descricao,
-        quantidade: quantidade,
-        preco: preco,
-        link: link
+        titulo,
+        descricao,
+        quantidade,
+        preco,
+        link
     }
 
     $.post("../Controller/ControllerProduto.php", dados, function (retorna) {
@@ -79,7 +79,7 @@ $('#confirmarExc').click(function () {
 
     var dados = {
         deletarProduto: 1,
-        id: id
+        id
     }
 
     $.post("../Controller/ControllerProduto.php", dados, function (retorno) {
@@ -139,12 +139,12 @@ $('#confirmarEdit').click(function () {
 
     var dados = {
         editarProduto: 1,
-        id: id,
-        titulo: titulo,
-        descricao: descricao,
-        quantidade: quantidade,
-        preco: preco,
-        link: link
+        id,
+        titulo,
+        descricao,
+        quantidade,
+        preco,
+        link
     }
 
     $.post("../Controller/ControllerProduto.php", dados, function (retorno) {
@@ -226,8 +226,8 @@ $('#selecione').change(function () {
 
         var dados = {
             pesquisarProduto: 1,
-            selecao: selecao,
-            pesquisa: pesquisa
+            selecao,
+            pesquisa
         }
 
         $.post("../Controller/ControllerProduto.php", dados, function (retorna) {
