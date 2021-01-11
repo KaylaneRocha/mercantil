@@ -104,7 +104,7 @@ class Produto
         }
     }
 
-    public function editar($id, $titulo, $descricao, $quantidade, $preco,$link)
+    public function editar($id, $titulo, $descricao, $quantidade, $preco, $link)
     {
         $conexao = new Conexao();
         $conn = $conexao->conectar();
@@ -145,7 +145,6 @@ class Produto
             $pesquisar->execute();
 
             return $pesquisar->fetchAll();
-
         } catch (PDOException $e) {
             echo $e;
         }
@@ -158,12 +157,12 @@ class Produto
 
         try {
             // Selecione tudo que comece com a $pesquisa
+
             $sql = "SELECT * FROM produto WHERE $sel LIKE '%$pesquisa%' ";
             $pesquisar = $conn->prepare($sql);
             $pesquisar->execute();
 
             return $pesquisar->fetchAll();
-
         } catch (PDOException $e) {
             echo $e;
         }

@@ -1,17 +1,18 @@
-
 listar();
 
 /* ============================================================================ */
 
 
 function listar() {
-    var table = $('.table');
+    var table = $('#table');
+
+    table.text("Teste")
 
     var dados = {
         listarProdutos: 1
     }
 
-    $.post("../Controller/ControllerProduto.php", dados, function (retorna) {
+    $.post("controller/ControllerProduto.php", dados, function (retorna) {
         table.html(retorna);
     });
 }
@@ -19,10 +20,13 @@ function listar() {
 
 /* ============================================================================ */
 
+/**
+ * Cadastro de Dados
+ */
 
 $('#confirmarCad').click(function () {
 
-    var loadModal = $('#staticBackdrop');
+    var loadModal = $('#mensagem');
     var contentModal = $('#modal_alert');
     var titulo = $('#titulo').val();
     var descricao = $('#descricao').val();
@@ -30,67 +34,40 @@ $('#confirmarCad').click(function () {
     var preco = $('#preco').val();
     var link = $('#link').val();
 
-    var dados = {
-        cadastrarProduto: 1,
-        titulo,
-        descricao,
-        quantidade,
-        preco,
-        link
-    }
 
-    $.post("../Controller/ControllerProduto.php", dados, function (retorna) {
+        var dados = {
+            cadastrarProduto: 1,
+            titulo,
+            descricao,
+            quantidade,
+            preco,
+            link
+        }
 
-        contentModal.text(retorna);
-        loadModal.modal('show');
-        $('#titulo').val("");
-        $('#descricao').val("");
-        $('#quantidade').val("");
-        $('#preco').val("");
-        listar();
+        $.post("controller/ControllerProduto.php", dados, function (retorna) {
 
-    });
+            contentModal.text(retorna);
+            $('#cadastro').modal('hide');
+            loadModal.modal('show');
+            setTimeout(function () {
+                loadModal.modal('hide');
+            }, 1500);
+            $('#titulo').val("");
+            $('#descricao').val("");
+            $('#quantidade').val("");
+            $('#preco').val("");
+            listar();
+            $("#mensagem").modal('hide');
 
+        });
 });
 
 
 /* ============================================================================ */
 
-
-function ConfirmarExc(id) {
-    var pergunta = $("#pergunta");
-    var loadModal = $('#staticBackdrop4');
-
-    $('#confirmarExc').val(id);
-    pergunta.text("Deseja mesmo excluir este Produto? ");
-    loadModal.modal('show');
-
-}
-
-
-/* ============================================================================ */
-
-
-$('#confirmarExc').click(function () {
-
-    var id = $(this).val()
-    var loadModal = $('#staticBackdrop');
-    var contentModal = $('#modal_alert');
-
-    var dados = {
-        deletarProduto: 1,
-        id
-    }
-
-    $.post("../Controller/ControllerProduto.php", dados, function (retorno) {
-        contentModal.text(retorno);
-        loadModal.modal('show');
-        listar();
-    });
-});
-
-/* ============================================================================ */
-
+/**
+ * Edição de Dados
+ */
 
 function consultarId(id) {
 
@@ -99,7 +76,7 @@ function consultarId(id) {
         id: id
     }
 
-    var loadModal = $('#staticBackdrop2');
+    var loadModal = $('#editar');
     var id = $('#idEdit');
     var titulo = $('#tituloEdit');
     var descricao = $('#descricaoEdit');
@@ -107,7 +84,7 @@ function consultarId(id) {
     var preco = $('#precoEdit');
     var link = $('#linkEdit');
 
-    $.post("../Controller/ControllerProduto.php", dados, function (retorno) {
+    $.post("controller/ControllerProduto.php", dados, function (retorno) {
         var dados = JSON.parse(retorno);
         id.val(dados.id);
         titulo.val(dados.titulo);
@@ -123,12 +100,9 @@ function consultarId(id) {
 }
 
 
-/* ============================================================================ */
-
-
 $('#confirmarEdit').click(function () {
 
-    var loadModal = $('#staticBackdrop');
+    var loadModal = $('#mensagem');
     var contentModal = $('#modal_alert');
     var id = $('#idEdit').val();
     var titulo = $('#tituloEdit').val();
@@ -147,15 +121,60 @@ $('#confirmarEdit').click(function () {
         link
     }
 
-    $.post("../Controller/ControllerProduto.php", dados, function (retorno) {
+    $.post("controller/ControllerProduto.php", dados, function (retorno) {
         contentModal.html(retorno);
         loadModal.modal('show');
+        setTimeout(function () {
+            loadModal.modal('hide');
+        }, 1500);
         listar();
     });
 });
 
+
 /* ============================================================================ */
 
+/**
+ * Exclusão de Dados
+ */
+
+function ConfirmarExc(id) {
+    var pergunta = $("#pergunta");
+    var loadModal = $('#deletar');
+
+    $('#confirmarExc').val(id);
+    pergunta.text("Deseja mesmo excluir este Produto? ");
+    loadModal.modal('show');
+
+}
+
+$('#confirmarExc').click(function () {
+
+    var id = $(this).val()
+    var loadModal = $('#mensagem');
+    var contentModal = $('#modal_alert');
+
+    var dados = {
+        deletarProduto: 1,
+        id
+    }
+
+    $.post("controller/ControllerProduto.php", dados, function (retorno) {
+        contentModal.text(retorno);
+        loadModal.modal('show');
+        setTimeout(function () {
+            loadModal.modal('hide');
+        }, 1500);
+        listar();
+    });
+});
+
+
+/* ============================================================================ */
+
+/**
+ * Visualização de Dados
+ */
 
 function visualizar(id) {
     var dados = {
@@ -163,7 +182,7 @@ function visualizar(id) {
         id: id
     }
 
-    var loadModal = $('#staticBackdrop5');
+    var loadModal = $('#visualizar');
     var id = $('#idView');
     var titulo = $('#tituloView');
     var descricao = $('#descricaoView');
@@ -171,7 +190,7 @@ function visualizar(id) {
     var preco = $('#precoView');
     var link = $('#imgView');
 
-    $.post("../Controller/ControllerProduto.php", dados, function (retorno) {
+    $.post("controller/ControllerProduto.php", dados, function (retorno) {
         var dados = JSON.parse(retorno);
         id.val(dados.id);
         titulo.val(dados.titulo);
@@ -181,12 +200,12 @@ function visualizar(id) {
         preco.val(dados.valor);
 
         if (dados.imglink == null || dados.imglink == "") {
-            link.attr('src', 'images/error.png');
+            link.attr('src', 'images/error.jpeg');
         } else {
             link.attr('src', dados.imglink);
         }
-        
-        
+
+
         loadModal.modal('show');
 
     });
@@ -194,48 +213,36 @@ function visualizar(id) {
 
 /* ============================================================================ */
 
+/**
+ * Filtrando Dados e mostrando na Tabela
+ */
 
-$('#pesquisa').keyup(function () {
+$('#filtrar').click(function () {
 
-    var table = $('#table');
-    var pesquisa = $(this).val();
-
-    var dados = {
-        buscarProduto: 1,
-        pesquisa: pesquisa
-    }
-
-    $.post("../Controller/ControllerProduto.php", dados, function (retorna) {
-        table.html(retorna);
-    });
-});
-
-
-/* ============================================================================ */
-
-
-$('#selecione').change(function () {
-
-    var selecao = $(this).val();
     var table = $('#table');
     var pesquisa = $('#pesquisa').val();
+    var select = $('#select').val();
 
-    if (selecao == 'sel') {
-        listar();
-    } else {
-
-        var dados = {
-            pesquisarProduto: 1,
-            selecao,
-            pesquisa
-        }
-
-        $.post("../Controller/ControllerProduto.php", dados, function (retorna) {
-            table.html(retorna);
-        });
-
+    var dados = {
+        pesquisarProduto: 1,
+        select,
+        pesquisa
     }
+
+    $.post("controller/ControllerProduto.php", dados, function (retorna) {
+        table.html(retorna);
+    });
+
+
 });
 
 
 /* ============================================================================ */
+
+
+$('#pesquisa').keyup(function () {
+    if ($(this).val() == null || $(this).val() == "") {
+        listar();
+    }
+});
+
