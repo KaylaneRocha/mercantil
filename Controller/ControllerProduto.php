@@ -36,7 +36,7 @@ if (isset($_POST['listarProdutos'])) {
                         </tr>";
         }
     } else {
-        echo "<cente><br><h4> Nenhum dado encontrado</h4><cente>";
+        echo "<br><h5>Nenhum dado encontrado</h5>";
     }
 }
 

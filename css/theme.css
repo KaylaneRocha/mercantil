@@ -215,6 +215,7 @@ strong {
 /* ----- Links ----- */
 a {
     display: inline-block;
+    text-decoration: line-through;
 }
 
 a:hover,
