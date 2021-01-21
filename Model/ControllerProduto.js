@@ -34,16 +34,34 @@ $('#confirmarCad').click(function () {
     var preco = $('#preco').val();
     var link = $('#link').val();
 
+    var dados = {
+        cadastrarProduto: 1,
+        titulo,
+        descricao,
+        quantidade,
+        preco,
+        link
+    }
 
-        var dados = {
-            cadastrarProduto: 1,
-            titulo,
-            descricao,
-            quantidade,
-            preco,
-            link
+    validacao = 1;
+
+    /* 
+    array_check = [
+        titulo,
+        descricao,
+        quantidade,
+        preco,
+        link
+    ];
+
+    $.each(array_check, function (keys, values) {
+        if (values.length == 0) {
+            validacao = 0;
+            break;
         }
+    }); */
 
+    if (validacao) {
         $.post("controller/ControllerProduto.php", dados, function (retorna) {
 
             contentModal.text(retorna);
@@ -60,6 +78,11 @@ $('#confirmarCad').click(function () {
             $("#mensagem").modal('hide');
 
         });
+    } else {
+        alert("Preencha todos os campos obrigatórios!!");
+    }
+
+
 });
 
 
@@ -245,4 +268,3 @@ $('#pesquisa').keyup(function () {
         listar();
     }
 });
-

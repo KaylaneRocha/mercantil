@@ -10,7 +10,7 @@ if (isset($_POST['listarProdutos'])) {
     $dados = $produto->listar();
     $count = count($dados);
 
-    if ($count != null) {
+    if ($count) {
         foreach ($dados as $produto) {
             echo "  
                         <tr>
@@ -89,7 +89,7 @@ if (isset($_POST['buscarProduto'])) {
 
     $count = count($dados);
 
-    if ($count  != null) {
+    if ($count) {
         foreach ($dados as $produto) {
             echo "  
             <tr>
@@ -133,7 +133,7 @@ if (isset($_POST['pesquisarProduto'])) {
     $dados = $produto->pesquisar($sel, $pesquisa);
     $count = count($dados);
 
-    if ($count != null) {
+    if ($count) {
         foreach ($dados as $produto) {
             echo "  
                 <tr>
